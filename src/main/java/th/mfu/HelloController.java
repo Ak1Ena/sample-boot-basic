@@ -11,6 +11,10 @@ public class HelloController {
     String hello() {
         return "Hello World!";
     }
+    @RequestMapping("/hi/{name}")
+    String hiName(@PathVariable String name) {
+        return "Hi " + name + "!";
+    }
 
    
 }
