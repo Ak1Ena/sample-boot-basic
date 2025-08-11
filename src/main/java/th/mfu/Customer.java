@@ -2,14 +2,29 @@ package th.mfu;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+@Entity
 public class Customer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @JsonProperty("fullname")
+    @Column(name = "DisplayName")
     private String name;
     private String email;
     private String address;
+
+    @JsonProperty("tel")
     private String phoneNumber;
     private LocalDate birthday;
 

@@ -1,0 +1,18 @@
+-- Sample Customer Data
+INSERT INTO customer (DisplayName, email, address, phoneNumber, birthday) VALUES ('John Doe', 'john.doe@example.com', '123 Main St, Anytown, USA', '555-0101', '1990-05-15');
+INSERT INTO customer (DisplayName, email, address, phoneNumber, birthday) VALUES ('Jane Smith', 'jane.smith@example.com', '456 Oak Ave, Sometown, USA', '555-0102', '1985-11-20');
+INSERT INTO customer (DisplayName, email, address, phoneNumber, birthday) VALUES ('Alice Johnson', 'alice.j@example.com', '789 Pine Ln, Yourtown, USA', '555-0103', '1992-02-10');
+INSERT INTO customer (DisplayName, email, address, phoneNumber, birthday) VALUES ('Bob Brown', 'bob.brown@example.com', '101 Maple Dr, Mytown, USA', '555-0104', '1988-07-30');
+INSERT INTO customer (DisplayName, email, address, phoneNumber, birthday) VALUES ('Charlie Davis', 'charlie.d@example.com', '212 Birch Rd, Othertown, USA', '555-0105', '2000-01-01');
+INSERT INTO customer (DisplayName, email, address, phoneNumber, birthday) VALUES ('Diana Miller', 'diana.m@example.com', '333 Cedar Ct, Anothertown, USA', '555-0106', '1995-09-25');
+INSERT INTO customer (DisplayName, email, address, phoneNumber, birthday) VALUES ('Ethan Wilson', 'ethan.w@example.com', '444 Spruce Way, Lasttown, USA', '555-0107', '1982-03-12');
+INSERT INTO customer (DisplayName, email, address, phoneNumber, birthday) VALUES ('Fiona Moore', 'fiona.m@example.com', '555 Elm St, Nexttown, USA', '555-0108', '1998-12-08');
+INSERT INTO customer (DisplayName, email, address, phoneNumber, birthday) VALUES ('George Taylor', 'george.t@example.com', '666 Willow Ave, Techtown, USA', '555-0109', '1991-06-18');
+INSERT INTO customer (DisplayName, email, address, phoneNumber, birthday) VALUES ('Hannah Anderson', 'hannah.a@example.com', '777 Poplar Pl, Finaltown, USA', '555-0110', '1993-04-22');
+
+-- Sample Product Data
+INSERT INTO product (name, description, price, manufactureDate) VALUES ('Laptop', 'A high-performance laptop', 1200.50, '2023-01-15');
+INSERT INTO product (name, description, price, manufactureDate) VALUES ('Mouse', 'An ergonomic wireless mouse', 25.00, '2023-02-20');
+INSERT INTO product (name, description, price, manufactureDate) VALUES ('Keyboard', 'A mechanical gaming keyboard', 75.99, '2023-03-10');
+INSERT INTO product (name, description, price, manufactureDate) VALUES ('Monitor', 'A 27-inch 4K UHD monitor', 300.00, '2022-11-05');
+INSERT INTO product (name, description, price, manufactureDate) VALUES ('Webcam', 'A 1080p HD webcam with microphone', 45.50, '2023-04-01');

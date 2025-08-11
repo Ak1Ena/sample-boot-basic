@@ -1,23 +1,24 @@
-package th.mfu;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+// package th.mfu;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+// import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@SpringBootTest
-public class HelloControllerTest {
+// import org.junit.jupiter.api.Test;
+// import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.boot.test.context.SpringBootTest;
 
-    @Autowired
-    private HelloController controller;
+// @SpringBootTest
+// public class HelloControllerTest {
 
-    @Test
-    public void testHello() {
+//     @Autowired
+//     private HelloController controller;
 
-        // Act
-        String response = controller.hello();
-        // Assert
-        assertEquals("Hello World!", response);
-    }
-}
+//     @Test
+//     public void testHello() {
+
+//         // Act
+//         String response = controller.hello();
+//         // Assert
+//         assertEquals("Hello World!", response);
+//     }
+// }

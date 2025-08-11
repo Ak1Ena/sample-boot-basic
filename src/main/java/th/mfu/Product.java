@@ -2,14 +2,24 @@ package th.mfu;
 
 import java.time.LocalDate;
 
+import javax.annotation.Generated;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+@Entity
 public class Product {
     private String name;
     private String description;
     private Double price;
     private LocalDate manufactureDate;
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
     public Integer getId() {

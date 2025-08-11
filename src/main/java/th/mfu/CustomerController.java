@@ -3,8 +3,11 @@ package th.mfu;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,36 +20,45 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CustomerController {
-    public static Map<Integer, Customer> customers = new HashMap<Integer,Customer>();
-    private int nextId = 1;
+    // public static Map<Integer, Customer> customers = new
+    // HashMap<Integer,Customer>();
+    // private int nextId = 1;
+    @Autowired
+    CustomerRepository customerRepo;
 
     @GetMapping("/customers")
-    public ResponseEntity<Collection> getAllCustomers(){
-        Collection<Customer> result = customers.values();
-        return new ResponseEntity<Collection>(result,HttpStatus.OK);
+    public ResponseEntity<Collection> getAllCustomers() {
+        Collection result = customerRepo.findAll();
+        return new ResponseEntity<Collection>(result, HttpStatus.OK);
     }
 
     @PostMapping("/customers")
-    public ResponseEntity<String> createCustomer(@RequestBody Customer customer){
-        customer.setId(nextId);
-        customers.put(nextId, customer);
-        nextId++;
-        return new ResponseEntity<String>("Customer created",HttpStatus.CREATED);
+    public ResponseEntity<String> createCustomer(@RequestBody Customer customer) {
+        customerRepo.save(customer);
+        return new ResponseEntity<String>("Customer created", HttpStatus.CREATED);
     }
 
     @GetMapping("/customers/{id}")
-    public ResponseEntity<Customer> getCustomer(@PathVariable Integer id){
-        if (customers.containsKey(id)) {
-            Customer customer = customers.get(id);
-            return new ResponseEntity<Customer>(customer,HttpStatus.FOUND);
+    public ResponseEntity<Customer> getCustomer(@PathVariable Integer id) {
+        if (customerRepo.existsById(id)) {
+            Optional<Customer> customer = customerRepo.findById(id);
+
+            return new ResponseEntity<Customer>(customer.get(), HttpStatus.FOUND);
         } else {
             return new ResponseEntity<Customer>(HttpStatus.NOT_FOUND);
         }
     }
 
     @DeleteMapping("/customers/{id}")
-    public ResponseEntity<String> deleteCustomer(@PathVariable Integer id){
-        customers.remove(id);
-        return new ResponseEntity<String>("Customer Deleted",HttpStatus.NO_CONTENT);
+    public ResponseEntity<String> deleteCustomer(@PathVariable Integer id) {
+        customerRepo.deleteById(id);
+        return new ResponseEntity<String>("Customer Deleted", HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/customers/name/{prefix}")
+    public ResponseEntity<Collection> searchCustomerByName(@PathVariable String prefix) {
+        List<Customer> customers = customerRepo.findByNameStartingWith(prefix);
+
+        return new ResponseEntity<Collection>(customers, HttpStatus.OK);
     }
 }
