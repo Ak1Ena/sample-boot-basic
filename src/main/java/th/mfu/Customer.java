@@ -1,13 +1,20 @@
 package th.mfu;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
+import org.springframework.data.annotation.Reference;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -28,7 +35,18 @@ public class Customer {
     private String phoneNumber;
     private LocalDate birthday;
 
-    
+    @ManyToOne
+    private CustomerTier customerTier;
+    @OneToMany(mappedBy="customer")
+    @JsonManagedReference("customer-order")
+    private List<SaleOrder> saleOrders;
+
+    public void setCustomerTier(CustomerTier customerTier) {
+        this.customerTier = customerTier;
+    }
+    public CustomerTier getCustomerTier() {
+        return customerTier;
+    }
     public void setName(String name) {
         this.name = name;
     }

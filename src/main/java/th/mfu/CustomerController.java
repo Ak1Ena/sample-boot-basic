@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,10 @@ public class CustomerController {
     @Autowired
     CustomerRepository customerRepo;
 
+    @Autowired
+    private CustomerTierRepository customerTierRepo;
+
+
     @GetMapping("/customers")
     public ResponseEntity<Collection> getAllCustomers() {
         Collection result = customerRepo.findAll();
@@ -34,6 +39,14 @@ public class CustomerController {
 
     @PostMapping("/customers")
     public ResponseEntity<String> createCustomer(@RequestBody Customer customer) {
+        if (customer.getCustomerTier() != null && customer.getCustomerTier().getId() != null) {
+            Optional<CustomerTier> tier = customerTierRepo.findById(customer.getCustomerTier().getId());
+            if (tier.isPresent()) {
+                customer.setCustomerTier(tier.get());
+            }else{
+                return new ResponseEntity<String>("Customer Tier not found", HttpStatus.BAD_REQUEST);
+            }
+        }
         customerRepo.save(customer);
         return new ResponseEntity<String>("Customer created", HttpStatus.CREATED);
     }

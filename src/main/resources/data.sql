@@ -16,3 +16,9 @@ INSERT INTO product (name, description, price, manufactureDate) VALUES ('Mouse',
 INSERT INTO product (name, description, price, manufactureDate) VALUES ('Keyboard', 'A mechanical gaming keyboard', 75.99, '2023-03-10');
 INSERT INTO product (name, description, price, manufactureDate) VALUES ('Monitor', 'A 27-inch 4K UHD monitor', 300.00, '2022-11-05');
 INSERT INTO product (name, description, price, manufactureDate) VALUES ('Webcam', 'A 1080p HD webcam with microphone', 45.50, '2023-04-01');
+
+INSERT INTO CustomerTier (id,name) VALUES (1,'Bronze');
+INSERT INTO CustomerTier (id,name) VALUES (2,'Silver');
+INSERT INTO CustomerTier (id,name) VALUES (3,'Gold');
+INSERT INTO CustomerTier (id,name) VALUES (4,'Platinum');
+INSERT INTO CustomerTier (id,name) VALUES (5,'Diamond');
